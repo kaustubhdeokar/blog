@@ -1,5 +1,5 @@
 ---
-title: "Welcome to my blog"
+title: "Refactoring..."
 ---
 
 > I'm a programmer, lost in this massive, ever-growing world of binaries. 
