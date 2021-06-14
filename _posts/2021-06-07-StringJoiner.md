@@ -3,8 +3,6 @@ title: "String-Joiner"
 date: 2021-06-17
 ---
 
-## String Joiner
-
 > Using a delimiter of ", ", appending strings will produce the result
   one, two, three.
 
