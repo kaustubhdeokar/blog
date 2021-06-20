@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "String-Joiner"
 date: 2021-06-17
+categories: jekyll string
 ---
 
 > Using a delimiter of ", ", appending strings will produce the result

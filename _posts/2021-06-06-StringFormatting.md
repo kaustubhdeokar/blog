@@ -1,6 +1,8 @@
 ---
+layout: post
 title: "String-Formatting"
 date: 2021-06-06
+categories: jekyll string
 ---
 
 > Better than using quotes and plus symbol each time, which produces a new string every time a plus symbol is used.  
