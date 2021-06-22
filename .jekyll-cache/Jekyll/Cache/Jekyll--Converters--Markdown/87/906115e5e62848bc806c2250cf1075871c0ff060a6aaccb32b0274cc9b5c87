@@ -1,0 +1,65 @@
+I".	<blockquote>
+  <p>Using a delimiter of “, “, appending strings will produce the result
+  one, two, three.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    @Test
+    public void testStringJoiner() {
+        StringJoiner stringJoiner = new StringJoiner(", ");
+
+        stringJoiner.add("one");
+        stringJoiner.add("two");
+        stringJoiner.add("three");
+
+        Assert.assertEquals(stringJoiner.toString(), "one, two, three");
+    }
+</code></pre></div></div>
+<blockquote>
+  <p>Can be done similar to a strinbuilder , as add returns the string joiner object.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    @Test
+    public void testStringJoinerReturnsStringJoiner() {
+        StringJoiner stringJoiner = new StringJoiner(", ");
+
+        stringJoiner.add("one").add("two").add("three");
+
+        Assert.assertEquals(stringJoiner.toString(), "one, two, three");
+    }
+</code></pre></div></div>
+<blockquote>
+  <p>Using starting and ending values.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    @Test
+    public void testStringJoinerWithStartingAndEndingValues() {
+        StringJoiner stringJoiner = new StringJoiner(", ","Start{","}End");
+        stringJoiner.add("one");
+        stringJoiner.add("two");
+        stringJoiner.add("three");
+
+        Assert.assertEquals(stringJoiner.toString(), "Start{one, two, three}End");
+    }
+</code></pre></div></div>
+<blockquote>
+  <p>To create a pattern as [one], [two], [three]</p>
+</blockquote>
+
+<p>```
+    /**
+     * To create a pattern as [one], [two], [three]
+     * So [ would be the starting symbol.
+     * ] would be the ending symbol.
+     * ], [ would be the delimiter.
+     */
+    @Test
+    public void testStringJoinerCreatingSquareBracketPattern() {
+        StringJoiner stringJoiner = new StringJoiner(“], [”,”[”,”]”);
+        stringJoiner.add(“one”);
+        stringJoiner.add(“two”);
+        stringJoiner.add(“three”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    Assert.assertEquals(stringJoiner.toString(), "[one], [two], [three]");
+} }
+</code></pre></div></div>
+:ET

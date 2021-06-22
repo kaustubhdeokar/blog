@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-06-20T20:13:31+05:30</updated><id>/feed.xml</id><title type="html">Refactoring…</title><subtitle>Learning new &amp; improving on the familiar.</subtitle><author><name>kaustubhdeokar</name></author><entry><title type="html">String-Joiner</title><link href="/jekyll/string/2021/06/17/StringJoiner.html" rel="alternate" type="text/html" title="String-Joiner" /><published>2021-06-17T00:00:00+05:30</published><updated>2021-06-17T00:00:00+05:30</updated><id>/jekyll/string/2021/06/17/StringJoiner</id><content type="html" xml:base="/jekyll/string/2021/06/17/StringJoiner.html">&lt;blockquote&gt;
+  &lt;p&gt;Using a delimiter of “, “, appending strings will produce the result
+  one, two, three.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    @Test
+    public void testStringJoiner() {
+        StringJoiner stringJoiner = new StringJoiner(&quot;, &quot;);
+
+        stringJoiner.add(&quot;one&quot;);
+        stringJoiner.add(&quot;two&quot;);
+        stringJoiner.add(&quot;three&quot;);
+
+        Assert.assertEquals(stringJoiner.toString(), &quot;one, two, three&quot;);
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Can be done similar to a strinbuilder , as add returns the string joiner object.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    @Test
+    public void testStringJoinerReturnsStringJoiner() {
+        StringJoiner stringJoiner = new StringJoiner(&quot;, &quot;);
+
+        stringJoiner.add(&quot;one&quot;).add(&quot;two&quot;).add(&quot;three&quot;);
+
+        Assert.assertEquals(stringJoiner.toString(), &quot;one, two, three&quot;);
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Using starting and ending values.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    @Test
+    public void testStringJoinerWithStartingAndEndingValues() {
+        StringJoiner stringJoiner = new StringJoiner(&quot;, &quot;,&quot;Start{&quot;,&quot;}End&quot;);
+        stringJoiner.add(&quot;one&quot;);
+        stringJoiner.add(&quot;two&quot;);
+        stringJoiner.add(&quot;three&quot;);
+
+        Assert.assertEquals(stringJoiner.toString(), &quot;Start{one, two, three}End&quot;);
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;To create a pattern as [one], [two], [three]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;```
+    /**
+     * To create a pattern as [one], [two], [three]
+     * So [ would be the starting symbol.
+     * ] would be the ending symbol.
+     * ], [ would be the delimiter.
+     */
+    @Test
+    public void testStringJoinerCreatingSquareBracketPattern() {
+        StringJoiner stringJoiner = new StringJoiner(“], [”,”[”,”]”);
+        stringJoiner.add(“one”);
+        stringJoiner.add(“two”);
+        stringJoiner.add(“three”);&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    Assert.assertEquals(stringJoiner.toString(), &quot;[one], [two], [three]&quot;);
+} }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>kaustubhdeokar</name></author><category term="jekyll" /><category term="string" /><summary type="html">Using a delimiter of “, “, appending strings will produce the result one, two, three.</summary></entry><entry><title type="html">Reader-Streams</title><link href="/2021/06/14/Reader-Streams.html" rel="alternate" type="text/html" title="Reader-Streams" /><published>2021-06-14T00:00:00+05:30</published><updated>2021-06-14T00:00:00+05:30</updated><id>/2021/06/14/Reader-Streams</id><content type="html" xml:base="/2021/06/14/Reader-Streams.html">&lt;ul&gt;
+  &lt;li&gt;Byte Reader Streams - InputStream&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To read a single byte.
+```java&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;private static void readSingleByte(InputStream input) throws IOException {
+        int intVal;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    while((intVal= input.read())&amp;gt;=0){
+        byte byteVal = (byte) intVal;
+        //using byteVal.
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&amp;gt; To read an array of  bytes.
+
+```java 
+   private static void readSingleByte(InputStream input) throws IOException {
+        int bytesRead;
+        byte[] byteArr = new byte[10];//could be any number, refers to the number of bytes you wish to read.
+        while((bytesRead= input.read(byteArr))&amp;gt;=0){
+            for(int i=0;i&amp;lt;bytesRead;i++){
+                byteArr[i]//has the value read.                 
+
+            }
+        }
+    
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Text Reader Streams - Reader&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Just replacing the byte with text.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>kaustubhdeokar</name></author><summary type="html">Byte Reader Streams - InputStream</summary></entry><entry><title type="html">String-Formatting</title><link href="/jekyll/string/2021/06/06/StringFormatting.html" rel="alternate" type="text/html" title="String-Formatting" /><published>2021-06-06T00:00:00+05:30</published><updated>2021-06-06T00:00:00+05:30</updated><id>/jekyll/string/2021/06/06/StringFormatting</id><content type="html" xml:base="/jekyll/string/2021/06/06/StringFormatting.html">&lt;blockquote&gt;
+  &lt;p&gt;Better than using quotes and plus symbol each time, which produces a new string every time a plus symbol is used.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+    int nephew1Age = 9;
+    int nephew2Age = 12;
+    int nephew3Age = 14;
+
+    System.out.printf(&quot;The ages of my nephew's are %d, %d, %d%n&quot;, nephew1Age, nephew2Age, nephew3Age);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Decimal formatting.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;double pi = Math.PI;
+System.out.printf(&quot;Pi value in 3 decimal places is %.3f&quot;,pi);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;```&lt;/p&gt;</content><author><name>kaustubhdeokar</name></author><category term="jekyll" /><category term="string" /><summary type="html">Better than using quotes and plus symbol each time, which produces a new string every time a plus symbol is used.</summary></entry><entry><title type="html">Initial-Post</title><link href="/2021/05/15/Initial-Post.html" rel="alternate" type="text/html" title="Initial-Post" /><published>2021-05-15T00:00:00+05:30</published><updated>2021-05-15T00:00:00+05:30</updated><id>/2021/05/15/Initial-Post</id><content type="html" xml:base="/2021/05/15/Initial-Post.html">&lt;p&gt;2021-05-15.&lt;/p&gt;</content><author><name>kaustubhdeokar</name></author><summary type="html">2021-05-15.</summary></entry></feed>

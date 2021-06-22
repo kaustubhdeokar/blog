@@ -1,0 +1,42 @@
+I"ê<ul>
+  <li>Byte Reader Streams - InputStream</li>
+</ul>
+
+<blockquote>
+  <p>To read a single byte.
+```java</p>
+</blockquote>
+
+<p>private static void readSingleByte(InputStream input) throws IOException {
+        int intVal;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    while((intVal= input.read())&gt;=0){
+        byte byteVal = (byte) intVal;
+        //using byteVal.
+    }
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&gt; To read an array of  bytes.
+
+```java 
+   private static void readSingleByte(InputStream input) throws IOException {
+        int bytesRead;
+        byte[] byteArr = new byte[10];//could be any number, refers to the number of bytes you wish to read.
+        while((bytesRead= input.read(byteArr))&gt;=0){
+            for(int i=0;i&lt;bytesRead;i++){
+                byteArr[i]//has the value read.                 
+
+            }
+        }
+    
+
+</code></pre></div></div>
+<ul>
+  <li>Text Reader Streams - Reader</li>
+</ul>
+
+<blockquote>
+  <p>Just replacing the byte with text.</p>
+</blockquote>
+:ET
